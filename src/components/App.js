@@ -1,35 +1,20 @@
-
 import React from "react";
-import {BrowserRouter as Router, Route, Link, Switch,Outlet } from "react-router-dom/cjs/react-router-dom.min";
 import './../styles/App.css';
-import Home from "../Component/Home";
-import About from "../Component/About";
-
+import { BrowserRouter, Route, Switch } from "react-router-dom"; // CORRECT import path
+import ItemList from "../pages/ItemList";
+import ItemDetail from "../pages/ItemDetail";
 
 const App = () => {
   return (
     <div>
-       <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/about'>About</Link>
-            </li>
-          </ul>
-        </nav>
-
+      <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
+          <Route exact path='/' component={ItemList} />
+          <Route path='/items/:id' component={ItemDetail} />
         </Switch>
-      </div>
-    </Router>
+      </BrowserRouter>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
